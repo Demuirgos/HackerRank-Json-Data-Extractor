@@ -5,6 +5,10 @@ langExtention = {'cpp14': ".cpp", 'cpp': ".cpp", 'python3': ".py", 'c': ".c", 'p
 dataFile = open("Demuirgos_data.json","r").read()
 jsonData=json.loads(dataFile)
 challenges={}
+if not os.path.exists("solved"):
+    os.mkdit("solved")
+if not os.path.exists("partial"):
+    os.mkdit("partial")
 
 for submission in jsonData["submissions"]:
     challengeName = re.sub("(\\|\/|\"|<|>|\:|\||\?|\*)","",submission["challenge"])
@@ -20,5 +24,10 @@ for submission in jsonData["submissions"]:
         challenge["language"]=submission["language"]
         challenges[challengeName]=challenge
 for challenge in challenges:
-    problemFile=open(challenge+langExtention[challenges[challenge]["language"]],"w")
+    path=""
+    if(challenges[challenge]["score"]==1):
+        path = "solved"+"//"
+    else :
+        path = "partial"+"//"
+    problemFile=open(path+challenge+langExtention[challenges[challenge]["language"]],"w")
     problemFile.write(challenges[challenge]["code"])
