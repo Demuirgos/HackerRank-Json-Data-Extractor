@@ -6,9 +6,9 @@ dataFile = open("Demuirgos_data.json","r").read()
 jsonData=json.loads(dataFile)
 challenges={}
 if not os.path.exists("solved"):
-    os.mkdit("solved")
+    os.mkdir("solved")
 if not os.path.exists("partial"):
-    os.mkdit("partial")
+    os.mkdir("partial")
 
 for submission in jsonData["submissions"]:
     challengeName = re.sub("(\\|\/|\"|<|>|\:|\||\?|\*)","",submission["challenge"])
