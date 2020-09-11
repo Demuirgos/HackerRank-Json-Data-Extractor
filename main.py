@@ -1,8 +1,9 @@
 import json
 import os
 import re
+path = input("Please enter the Json File's Path :")
 langExtention = {'cpp14': ".cpp", 'cpp': ".cpp", 'python3': ".py", 'c': ".c", 'pypy3': ".py", 'csharp': ".cs", 'bash': ".bash", 'visualbasic': ".vb", 'text': ".txt", 'oracle': ".sql", 'mysql': ".sql", 'java8': ".java", 'java': ".java", 'pypy': ".py", 'javascript': ".js", '["html", "js", "css"]': ".html", 'tsql': ".sql", 'php':".php", 'fsharp': ".fs"}
-dataFile = open("Demuirgos_data.json","r").read()
+dataFile = open(path ,"r").read()
 jsonData=json.loads(dataFile)
 challenges={}
 if not os.path.exists("solved"):
